@@ -66,6 +66,7 @@ RUN set -eux; \
 	zip -v | head -2; \
 	unzip -v | head -1; \
 	tar --version | head -1; \
+	envsubst --version | head -1; \
 	node --version; \
 	npm --version; \
 	java --version; \

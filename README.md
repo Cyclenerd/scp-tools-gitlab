@@ -33,6 +33,24 @@ Execute...
 
 ### Example
 
+`mta.yml`:
+
+```
+_schema-version: '2.0'
+ID: de.nkn-it.demo
+version: 1.0.0
+
+modules:
+  - name: demo
+    type: html5
+    path: webapp
+    parameters:
+      version: ${VERSION}
+    build-parameters:
+      builder: zip
+      ignore: ["*.git*"]
+```
+
 `.gitlab-ci.yml`:
 
 ```
@@ -44,6 +62,8 @@ stages:
 build-and-deploy:
   stage: deploy
   script:
+    - export VERSION=$(git rev-parse --short HEAD)
+    - envsubst < mta.yaml > mta.yaml
     - java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar --mtar deploy.mtar --build-target=NEO build
     - neo.sh deploy-mta -a "$SCP_ACCOUNT" -u "$SCP_USER" -p "$SCP_PASSWORD" -h hana.ondemand.com --source deploy.mtar --synchronous
   only:
