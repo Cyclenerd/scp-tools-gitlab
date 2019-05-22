@@ -26,7 +26,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN set -eux; \
 # Install base packages
 	apt-get update -yqq; \
-	apt-get install -yqq apt-utils wget ca-certificates git zip unzip tar lsb-release gnupg; \
+	apt-get install -yqq apt-utils wget ca-certificates git zip unzip tar lsb-release gnupg gettext-base; \
 # Create storage locations
 	mkdir -p "$NEO_SDK_HOME"; \
 	mkdir -p "$MTA_BUILDER_HOME"; \
