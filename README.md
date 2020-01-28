@@ -20,6 +20,7 @@ The following software is included:
   * [eslint](https://www.npmjs.com/package/eslint)
     * [eslint-plugin-ui5](https://www.npmjs.com/package/eslint-plugin-ui5)
     * [eslint-config-ui5](https://www.npmjs.com/package/eslint-config-ui5)
+* [SAP Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/) (`mbt`)
 
 ## HOWTO
 
@@ -30,6 +31,7 @@ Execute...
 * SAP Cloud Platform Neo Environment SDK: `neo.sh`
 * SAP Multi-Target Application Archive Builder: `java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar`
 * Node.js: `node`
+* SAP Cloud MTA Build tool: `mbt`
 
 ### Example
 

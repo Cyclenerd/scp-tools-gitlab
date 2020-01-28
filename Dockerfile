@@ -60,6 +60,11 @@ RUN set -eux; \
 	rm "$HOME/neo-java-web-sdk.zip"; \
 # Install SAP Multi-Target Application Archive Builder
 	wget -nv --output-document="$MTA_BUILDER_HOME/mta_archive_builder.jar" --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" "$MTA_BUILDER_URL"; \
+# Install mbt / Currently there is a bug in binwrap, so we have to use this workaround ( https://github.com/avh4/binwrap/issues/21 ) 
+	npm install mbt -g --ignore-scripts; \ 
+	cd /usr/lib/node_modules/mbt/; \
+	chmod -R 777 .; \
+	npm install; \
 # Basic smoke test
 	uname -a; \
 	wget --version | head -1; \
@@ -73,6 +78,7 @@ RUN set -eux; \
 	cf --version; \
 	neo.sh version; \
 	java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar --version; \
+	mbt --version; \
 # Delete apt cache
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
