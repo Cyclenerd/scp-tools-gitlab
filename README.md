@@ -35,7 +35,7 @@ Execute...
 
 ### Example
 
-`mta.yml`:
+#### mta.yml
 
 ```
 _schema-version: '2.0'
@@ -53,7 +53,27 @@ modules:
       ignore: ["*.git*"]
 ```
 
-`.gitlab-ci.yml`:
+#### .gitlab-ci.yml
+
+SAP Cloud MTA Build Tool:
+
+```
+image: cyclenerd/scp-tools-gitlab:latest
+
+stages:
+  - deploy
+
+build-and-deploy:
+  stage: deploy
+  script:
+    - export VERSION=$(git rev-parse --short HEAD)
+    - mbt build --platform=neo --target=mta_archives --mtar=deploy.mtar
+    - neo.sh deploy-mta -a "$SCP_ACCOUNT" -u "$SCP_USER" -p "$SCP_PASSWORD" -h hana.ondemand.com --source mta_archives/deploy.mtar --synchronous
+  only:
+    - master
+```
+
+SAP Multi-Target Application Archive Builder:
 
 ```
 image: cyclenerd/scp-tools-gitlab:latest
