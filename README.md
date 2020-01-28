@@ -67,6 +67,7 @@ build-and-deploy:
   stage: deploy
   script:
     - export VERSION=$(git rev-parse --short HEAD)
+    - envsubst < mta.yaml > mta.yaml
     - mbt build --platform=neo --target=mta_archives --mtar=deploy.mtar
     - neo.sh deploy-mta -a "$SCP_ACCOUNT" -u "$SCP_USER" -p "$SCP_PASSWORD" -h hana.ondemand.com --source mta_archives/deploy.mtar --synchronous
   only:
