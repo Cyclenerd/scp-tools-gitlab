@@ -31,7 +31,7 @@ Execute...
 * SAP Cloud Platform Neo Environment SDK: `neo.sh`
 * SAP Multi-Target Application Archive Builder: `java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar`
 * Node.js: `node`
-* SAP Cloud MTA Build tool: `mta`
+* SAP Cloud MTA Build tool: `mbt`
 
 ### Example
 
