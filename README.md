@@ -34,7 +34,7 @@ The following software is included:
 Execute...
 
 * Java: `java`
-* Python 2: `python`
+* Python 2: `python2`
 * Python 3: `python3`
 * Cloud Foundry CLI: `cf`
 * SAP Cloud Platform Neo Environment SDK: `neo.sh`

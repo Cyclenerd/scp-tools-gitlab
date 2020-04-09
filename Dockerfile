@@ -69,6 +69,7 @@ RUN set -eux; \
 	pip3 install mkdocs ; \
 	pip3 install mkdocs-material; \
 # Basic smoke test
+	lsb_release -a; \
 	uname -a; \
 	wget --version | head -1; \
 	zip -v | head -2; \
@@ -78,6 +79,8 @@ RUN set -eux; \
 	node --version; \
 	npm --version; \
 	java --version; \
+	python2 --version; \
+	python3 --version; \
 	cf --version; \
 	neo.sh version; \
 	java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar --version; \
