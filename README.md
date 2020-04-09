@@ -22,6 +22,8 @@ The following software is included:
   * [eslint](https://www.npmjs.com/package/eslint)
     * [eslint-plugin-ui5](https://www.npmjs.com/package/eslint-plugin-ui5)
     * [eslint-config-ui5](https://www.npmjs.com/package/eslint-config-ui5)
+* [MkDocs](https://www.mkdocs.org/)
+  * [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 
 ## HOWTO
 
