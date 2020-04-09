@@ -12,6 +12,8 @@ The following software is included:
 * [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/) (`cf`)
 * [SAP Cloud Platform Neo Environment SDK](https://tools.hana.ondemand.com/#cloud) (`neo.sh`)
 * [SAP Multi-Target Application Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html) (`mta_archive_builder.jar`)
+  * Note: As of version 1.1.20, the Multi-Target Application Archive Builder is deprecated. Please use "SAP Cloud MTA Build Tool".
+* [SAP Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/) (`mbt`)
 * [Node.js](https://nodejs.org/) (`node`)
   * [grunt-cli](https://www.npmjs.com/package/grunt-cli)
   * [gulp-cli](https://www.npmjs.com/package/gulp-cli)
@@ -20,7 +22,6 @@ The following software is included:
   * [eslint](https://www.npmjs.com/package/eslint)
     * [eslint-plugin-ui5](https://www.npmjs.com/package/eslint-plugin-ui5)
     * [eslint-config-ui5](https://www.npmjs.com/package/eslint-config-ui5)
-* [SAP Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/) (`mbt`)
 
 ## HOWTO
 
