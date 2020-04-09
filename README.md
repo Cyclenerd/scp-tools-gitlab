@@ -2,13 +2,17 @@
 
 > One image to rule them all
 
+This Docker Image is heavily used within the [Otto Group](https://www.ottogroup.com/).
+More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-its-journey-to-sap-cloud-platform/>
+
 ## Software
 
-This Docker image based is on Ubuntu GNU/Linux.
+This Docker image based is on **Ubuntu GNU/Linux**.
 
 The following software is included:
 
 * [SapMachine](https://sap.github.io/SapMachine/) *OpenJDK release maintained and supported by SAP* (`java`)
+* [Python](https://www.python.org/) 2 and 3 (`python3`)
 * [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/) (`cf`)
 * [SAP Cloud Platform Neo Environment SDK](https://tools.hana.ondemand.com/#cloud) (`neo.sh`)
 * [SAP Multi-Target Application Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html) (`mta_archive_builder.jar`)
@@ -22,7 +26,7 @@ The following software is included:
   * [eslint](https://www.npmjs.com/package/eslint)
     * [eslint-plugin-ui5](https://www.npmjs.com/package/eslint-plugin-ui5)
     * [eslint-config-ui5](https://www.npmjs.com/package/eslint-config-ui5)
-* [MkDocs](https://www.mkdocs.org/)
+* [MkDocs](https://www.mkdocs.org/) (`mkdocs`)
   * [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 
 ## HOWTO
@@ -30,11 +34,14 @@ The following software is included:
 Execute...
 
 * Java: `java`
+* Python 2: `python`
+* Python 3: `python3`
 * Cloud Foundry CLI: `cf`
 * SAP Cloud Platform Neo Environment SDK: `neo.sh`
 * SAP Multi-Target Application Archive Builder: `java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar`
 * Node.js: `node`
 * SAP Cloud MTA Build tool: `mbt`
+* MkDocs: `mkdocs`
 
 ### Example
 
