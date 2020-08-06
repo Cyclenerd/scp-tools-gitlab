@@ -7,12 +7,12 @@ More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-
 
 ## Software
 
-This Docker image based is on **Ubuntu GNU/Linux**.
+This Docker image based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:latest`).
 
 The following software is included:
 
 * [SapMachine](https://sap.github.io/SapMachine/) *OpenJDK release maintained and supported by SAP* (`java`)
-* [Python](https://www.python.org/) 2 and 3 (`python3`)
+* [Python 3](https://www.python.org/) (`python3`)
 * [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/) (`cf`)
 * [SAP Cloud Platform Neo Environment SDK](https://tools.hana.ondemand.com/#cloud) (`neo.sh`)
 * [SAP Multi-Target Application Archive Builder](https://help.sap.com/viewer/58746c584026430a890170ac4d87d03b/Cloud/en-US/ba7dd5a47b7a4858a652d15f9673c28d.html) (`mta_archive_builder.jar`)
@@ -34,7 +34,6 @@ The following software is included:
 Execute...
 
 * Java: `java`
-* Python 2: `python2`
 * Python 3: `python3`
 * Cloud Foundry CLI: `cf`
 * SAP Cloud Platform Neo Environment SDK: `neo.sh`
