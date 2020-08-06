@@ -79,7 +79,6 @@ RUN set -eux; \
 	node --version; \
 	npm --version; \
 	java --version; \
-	python --version; \
 	python3 --version; \
 	cf --version; \
 	neo.sh version; \
