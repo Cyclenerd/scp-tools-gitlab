@@ -26,7 +26,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN set -eux; \
 # Install base packages
 	apt-get update -yqq; \
-	apt-get install -yqq apt-utils build-essential wget ca-certificates git zip unzip tar lsb-release gnupg gettext-base; \
+	apt-get install -yqq apt-utils build-essential wget ca-certificates git zip unzip tar lsb-release gnupg gettext-base python3-pip; \
 # Create storage locations
 	mkdir -p "$NEO_SDK_HOME"; \
 	mkdir -p "$MTA_BUILDER_HOME"; \
@@ -66,8 +66,8 @@ RUN set -eux; \
 	chmod -R 777 .; \
 	npm install; \
 # MkDocs
-	pip install mkdocs ; \
-	pip install mkdocs-material; \
+	pip3 install mkdocs ; \
+	pip3 install mkdocs-material; \
 # Basic smoke test
 	lsb_release -a; \
 	uname -a; \
@@ -80,6 +80,7 @@ RUN set -eux; \
 	npm --version; \
 	java --version; \
 	python --version; \
+	python3 --version; \
 	cf --version; \
 	neo.sh version; \
 	java -jar $MTA_BUILDER_HOME/mta_archive_builder.jar --version; \
