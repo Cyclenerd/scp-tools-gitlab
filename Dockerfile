@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # Download URLs
-ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.113.7.2.zip "
+ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.113.7.2.zip"
 ENV MTA_BUILDER_URL  "https://tools.hana.ondemand.com/additional/mta_archive_builder-1.1.20.jar"
 ENV NODEJS_URL       "https://deb.nodesource.com/setup_12.x"
 
