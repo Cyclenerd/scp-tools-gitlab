@@ -65,6 +65,7 @@ RUN set -eux; \
 # MkDocs
 	pip3 install mkdocs ; \
 	pip3 install mkdocs-material; \
+	pip3 install mkdocs-minify-plugin; \
 # Basic smoke test
 	lsb_release -a; \
 	uname -a; \
