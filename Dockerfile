@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 # Download URLs
-ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.114.7.zip"
+ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.115.6.zip"
 ENV NODEJS_URL       "https://deb.nodesource.com/setup_12.x"
 
 # Storage locations
