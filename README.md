@@ -17,6 +17,7 @@ The following software is included:
 * [SAP Cloud Platform Neo Environment SDK](https://tools.hana.ondemand.com/#cloud) (`neo.sh`)
 * [SAP Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/) (`mbt`)
 * [Node.js](https://nodejs.org/) (`node`)
+  * [@ui5/cli](https://www.npmjs.com/package/@ui5/cli)
   * [grunt-cli](https://www.npmjs.com/package/grunt-cli)
   * [gulp-cli](https://www.npmjs.com/package/gulp-cli)
     * [ui5-toolkit-gulp](https://www.npmjs.com/package/ui5-toolkit-gulp)
