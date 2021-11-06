@@ -7,7 +7,7 @@ More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-
 
 ## Software
 
-This Docker image based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:latest`).
+This Docker image based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:20.04`).
 
 The following software is included:
 
