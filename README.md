@@ -1,6 +1,6 @@
-# SAP Cloud Platform Tools optimized for GitLab Runner
+# SAP Cloud Platform (SAP BTP) Tools optimized for GitLab Runner
 
-> One image to rule them all
+> 💿 One image to rule them all
 
 This Docker Image is heavily used within the [Otto Group](https://www.ottogroup.com/).
 More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-its-journey-to-sap-cloud-platform/>
@@ -28,7 +28,13 @@ The following software is included:
 * [MkDocs](https://www.mkdocs.org/) (`mkdocs`)
   * [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 
+
 ## HOWTO
+
+Docker pull command:
+```shell
+docker pull cyclenerd/scp-tools-gitlab:latest
+```
 
 Execute...
 
@@ -40,9 +46,14 @@ Execute...
 * SAP Cloud MTA Build tool: `mbt`
 * MkDocs: `mkdocs`
 
-### Example
+Example run command:
+```
+docker run cyclenerd/scp-tools-gitlab:latest java --version
+```
 
-#### mta.yml
+## CI/CD Example
+
+### mta.yml
 
 ```
 _schema-version: '2.0'
@@ -60,7 +71,7 @@ modules:
       ignore: ["*.git*"]
 ```
 
-#### .gitlab-ci.yml
+### .gitlab-ci.yml
 
 SAP Cloud MTA Build Tool:
 
