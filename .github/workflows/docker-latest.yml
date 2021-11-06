@@ -1,20 +1,113 @@
-name: Docker Hub latest
+name: "Docker image"
 
 on:
   push:
-    branches:
-    - master
+    branches: [ master ]
 
 jobs:
 
-  docker-hub:
+  docker:
+    name: Build Docker images
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.0.0
-    - name: Login
-      run: docker login -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" -p "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" "docker.io"
-    - name: Build 
-      run: docker build -t cyclenerd/scp-tools-gitlab:latest .
-    - name: Push
-      run: docker push cyclenerd/scp-tools-gitlab:latest
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx 🔧
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers 💾
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Login to GitHub Container registry 🏭
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push CLI image 🧪
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ghcr.io/cyclenerd/scp-tools-gitlab:test
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+  docker-test:
+    name: Test Docker image
+    needs: [docker]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container registry 🏭
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull CLI test image 💿
+        run: |
+          docker pull ghcr.io/cyclenerd/scp-tools-gitlab:test
+          docker tag ghcr.io/cyclenerd/scp-tools-gitlab:test scp-tools-gitlab
+      # Run tests
+      - name: Test Java versions 📏
+        run: docker run scp-tools-gitlab  java --version
+      - name: Test Cloud Foundry CLI versions 📏
+        run: docker run scp-tools-gitlab cf --version
+      - name: Test Neo Environment SDK versions 📏
+        run: docker run scp-tools-gitlab neo.sh version
+      - name: Test Cloud MTA Build Tool versions 📏
+        run: docker run scp-tools-gitlab mbt --version
+      - name: Test MkDocs versions 📏
+        run: docker run scp-tools-gitlab mkdocs --version
+
+  github-registry-latest:
+    name: Push image to GitHub
+    runs-on: ubuntu-latest
+    needs: [docker-test]
+    steps:
+      - name: Login to GitHub Container registry 🏭
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull latest test image from GitHub container registry 📦
+        run: docker pull ghcr.io/cyclenerd/scp-tools-gitlab:test
+      - name: Quick test 📏
+        run: docker run ghcr.io/cyclenerd/scp-tools-gitlab:test java --version
+      - name: Push image to GitHub container registry as latest version 🚢
+        run: |
+          docker tag ghcr.io/cyclenerd/scp-tools-gitlab:test ghcr.io/cyclenerd/scp-tools-gitlab:latest
+          docker push ghcr.io/cyclenerd/scp-tools-gitlab:latest
+
+  docker-hub-latest:
+    name: Push image to Docker Hub
+    runs-on: ubuntu-latest
+    needs: [docker-test]
+    steps:
+      - name: Login to Docker Hub registry 🏭
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      - name: Pull latest test image from GitHub container registry 📦
+        run: docker pull ghcr.io/cyclenerd/scp-tools-gitlab:test
+      - name: Quick test 📏
+        run: docker run ghcr.io/cyclenerd/scp-tools-gitlab:test java --version
+      - name: Push image to Docker Hub registry as latest version 🚢
+        run: |
+          docker tag ghcr.io/cyclenerd/scp-tools-gitlab:test cyclenerd/scp-tools-gitlab:latest
+          docker push cyclenerd/scp-tools-gitlab:latest
