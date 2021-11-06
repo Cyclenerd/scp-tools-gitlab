@@ -22,6 +22,14 @@ ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE true
 # Disable error: Failed to download Chromium r650583
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
+# Labels
+LABEL org.opencontainers.image.title         "SAP Cloud Platform (SAP BTP) Tools optimized for GitLab Runner"
+LABEL org.opencontainers.image.description   "The following software and tools are included: java, python3, cf, neo.sh, mbt, node, mkdocs"
+LABEL org.opencontainers.image.url           "https://hub.docker.com/r/cyclenerd/scp-tools-gitlab"
+LABEL org.opencontainers.image.authors       "https://github.com/Cyclenerd/scp-tools-gitlab/graphs/contributors"
+LABEL org.opencontainers.image.documentation "https://github.com/Cyclenerd/scp-tools-gitlab/blob/master/README.md"
+LABEL org.opencontainers.image.source        "https://github.com/Cyclenerd/scp-tools-gitlab"
+
 RUN set -eux; \
 # Install base packages
 	apt-get update -yqq; \
