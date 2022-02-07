@@ -44,7 +44,7 @@ RUN set -eux; \
 	apt-get install -yqq nodejs; \
 	rm "$HOME/nodejs_setup.sh"; \
 # Install Node.js packages (https://www.npmjs.com/package)
-	npm install @ui5/cli -g; \
+	npm install @ui5/cli@2.14.3 -g; \
 	npm install grunt-cli -g; \
 	npm install gulp-cli -g; \
 	npm install showdown -g; \
