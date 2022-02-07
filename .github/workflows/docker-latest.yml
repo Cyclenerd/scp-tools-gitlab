@@ -3,6 +3,8 @@ name: "Docker image"
 on:
   push:
     branches: [ master ]
+  schedule:
+    - cron: '42 5 15 * *' # At 05:42 on day-of-month 15.
 
 jobs:
 
