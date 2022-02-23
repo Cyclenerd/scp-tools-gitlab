@@ -2,12 +2,16 @@
 
 > 💿 One image to rule them all
 
-This Docker Image is heavily used within the [Otto Group](https://www.ottogroup.com/).
+This [Docker Image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) is heavily used within the [Otto Group](https://www.ottogroup.com/).
 More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-its-journey-to-sap-cloud-platform/>
+
+[![Docker image](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml/badge.svg)](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/cyclenerd/scp-tools-gitlab)](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab)
+[![GitHub](https://img.shields.io/github/license/cyclenerd/scp-tools-gitlab)](https://github.com/Cyclenerd/scp-tools-gitlab/blob/master/LICENSE)
 
 ## Software
 
-This Docker image based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:20.04`).
+This [Docker image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:20.04`).
 
 The following software is included:
 
