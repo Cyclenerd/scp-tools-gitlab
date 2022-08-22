@@ -1,8 +1,7 @@
-name: "Docker image"
+name: "Latest image"
 
 on:
-  push:
-    branches: [ master ]
+  workflow_dispatch:
   schedule:
     - cron: '42 5 15 * *' # At 05:42 on day-of-month 15.
 
