@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 # Download URLs
 ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.161.5.zip"
-ENV NODEJS_URL       "https://deb.nodesource.com/setup_12.x"
+ENV NODEJS_URL       "https://deb.nodesource.com/setup_16.x"
 
 # Storage locations
 ENV NEO_SDK_HOME     "/opt/neo-sdk"
@@ -44,7 +44,7 @@ RUN set -eux; \
 	apt-get install -yqq nodejs; \
 	rm "$HOME/nodejs_setup.sh"; \
 # Install Node.js packages (https://www.npmjs.com/package)
-	npm install @ui5/cli@2.14.3 -g; \
+	npm install @ui5/cli -g; \
 	npm install grunt-cli -g; \
 	npm install gulp-cli -g; \
 	npm install showdown -g; \
