@@ -1,8 +1,8 @@
 # SAP Cloud Platform (SAP BTP) Tools optimized for GitLab Runner
 
-![Bagde: SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=white)
-![Badge: GitLab](https://img.shields.io/badge/GitLab-FC6D26.svg?logo=gitlab&logoColor=white)
-![Bagde: Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?logo=docker&logoColor=white)
+[![Bagde: SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=white)](#readme)
+[![Badge: GitLab](https://img.shields.io/badge/GitLab-FC6D26.svg?logo=gitlab&logoColor=white)](#readme)
+[![Bagde: Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?logo=docker&logoColor=white)](#readme)
 [![Bagde: Docker image](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml/badge.svg)](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml)
 [![Bagde: Docker pulls](https://img.shields.io/docker/pulls/cyclenerd/scp-tools-gitlab)](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab)
 [![Bagde: GitHub](https://img.shields.io/github/license/cyclenerd/scp-tools-gitlab)](https://github.com/Cyclenerd/scp-tools-gitlab/blob/master/LICENSE)
