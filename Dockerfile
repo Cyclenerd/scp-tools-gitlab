@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 # Download URLs
 ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-4.43.15.zip"
-ENV NODEJS_URL       "https://deb.nodesource.com/setup_16.x"
+ENV NODEJS_URL       "https://deb.nodesource.com/setup_18.x"
 
 # Storage locations
 ENV NEO_SDK_HOME     "/opt/neo-sdk"
