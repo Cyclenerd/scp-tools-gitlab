@@ -10,7 +10,7 @@ if [ -v GITHUB_RUN_ID ]; then
 fi
 
 # Check SAP Dev Tools website
-curl "https://tools.hana.ondemand.com/" | grep -E -o -m 1 "neo-java-web-sdk-3[[:digit:]\.]+.zip" | sort -u > "/tmp/last-neo-sdk-version"
+curl "https://tools.hana.ondemand.com/" | grep -E -o -m 1 "neo-java-web-sdk-4[[:digit:]\.]+.zip" | sort -u > "/tmp/last-neo-sdk-version"
 
 # echo "neo-java-web-sdk-1.2.3.zip" > "/tmp/last-neo-sdk-version"
 
