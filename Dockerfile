@@ -8,7 +8,7 @@ ENV NODEJS_URL       "https://deb.nodesource.com/setup_16.x"
 ENV NEO_SDK_HOME     "/opt/neo-sdk"
 ENV MTA_BUILDER_HOME "/opt/mta-builder"
 
-ENV JAVA_HOME "/usr/lib/jvm/sapmachine-11"
+ENV JAVA_HOME "/usr/lib/jvm/sapmachine-17"
 ENV PATH="${JAVA_HOME}/bin:${NEO_SDK_HOME}/tools:${PATH}"
 
 # Default to UTF-8 file.encoding
@@ -56,7 +56,7 @@ RUN set -eux; \
 	wget -q -O - https://dist.sapmachine.io/debian/sapmachine.key | apt-key add -; \
 	echo "deb http://dist.sapmachine.io/debian/amd64/ ./" | tee /etc/apt/sources.list.d/sapmachine.list; \
 	apt-get update -yqq; \
-	apt-get install -yqq sapmachine-11-jdk; \
+	apt-get install -yqq sapmachine-17-jdk; \
 # Install Cloud Foundry CLI
 	wget -q -O - "https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key" | apt-key add -; \
 	echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list; \
@@ -66,8 +66,8 @@ RUN set -eux; \
 	wget -nv --output-document="$HOME/neo-java-web-sdk.zip" --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" "$NEO_SDK_URL"; \
 	unzip -q -o "$HOME/neo-java-web-sdk.zip" -d "$NEO_SDK_HOME"; \
 	rm "$HOME/neo-java-web-sdk.zip"; \
-# Install mbt / Currently there is a bug in binwrap, so we have to use this workaround ( https://github.com/avh4/binwrap/issues/21 ) 
-	npm install mbt -g --ignore-scripts; \ 
+# Install mbt / Currently there is a bug in binwrap, so we have to use this workaround ( https://github.com/avh4/binwrap/issues/21 )
+	npm install mbt -g --ignore-scripts; \
 	cd /usr/lib/node_modules/mbt/; \
 	chmod -R 777 .; \
 	npm install; \
