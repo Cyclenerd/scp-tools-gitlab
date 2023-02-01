@@ -40,6 +40,8 @@ The following software is included:
 
 ## HOWTO
 
+### Usage
+
 Docker pull command:
 ```shell
 docker pull cyclenerd/scp-tools-gitlab:latest
@@ -59,6 +61,14 @@ Example run command:
 ```
 docker run cyclenerd/scp-tools-gitlab:latest java --version
 ```
+
+### Building the image
+
+Execute from the repository directory:
+```sh
+docker build -t scp-tools-gitlab -f Dockerfile .
+```
+The image will be availabel locally as `scp-tools-gitlab`
 
 ## CI/CD Example
 
