@@ -51,7 +51,6 @@ RUN set -eux; \
 	npm install eslint -g; \
 	npm install eslint-plugin-ui5 -g; \
 	npm install eslint-config-ui5 -g; \
-	npm install ui5-toolkit-gulp -g; \
 # Install SapMachine JDK
 	wget -q -O - https://dist.sapmachine.io/debian/sapmachine.key | apt-key add -; \
 	echo "deb http://dist.sapmachine.io/debian/amd64/ ./" | tee /etc/apt/sources.list.d/sapmachine.list; \

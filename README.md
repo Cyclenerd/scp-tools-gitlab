@@ -29,7 +29,7 @@ The following software is included:
   * [@ui5/cli](https://www.npmjs.com/package/@ui5/cli)
   * [grunt-cli](https://www.npmjs.com/package/grunt-cli)
   * [gulp-cli](https://www.npmjs.com/package/gulp-cli)
-    * [ui5-toolkit-gulp](https://www.npmjs.com/package/ui5-toolkit-gulp)
+    * <s>[ui5-toolkit-gulp](https://www.npmjs.com/package/ui5-toolkit-gulp)</s> (removed)
   * [showdown](https://www.npmjs.com/package/showdown)
   * [eslint](https://www.npmjs.com/package/eslint)
     * [eslint-plugin-ui5](https://www.npmjs.com/package/eslint-plugin-ui5)
