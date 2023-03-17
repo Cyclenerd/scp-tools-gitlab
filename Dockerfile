@@ -62,7 +62,7 @@ RUN set -eux; \
 	apt-get update -yqq; \
 	apt-get install -yqq cf-cli;\
 # ...so that "cf deploy" is available
-	cf install-plugin multiapps;\ 
+	cf install-plugin multiapps -f;\ 
 # Install SAP Cloud Platform Neo Environment SDK (https://tools.hana.ondemand.com/#cloud)
 	wget -nv --output-document="$HOME/neo-java-web-sdk.zip" --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" "$NEO_SDK_URL"; \
 	unzip -q -o "$HOME/neo-java-web-sdk.zip" -d "$NEO_SDK_HOME"; \
