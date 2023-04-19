@@ -1,7 +1,8 @@
-# SAP Cloud Platform (SAP BTP) Tools optimized for GitLab Runner
+# SAP Cloud (SAP BTP) Tools optimized for GitLab Runner
 
 [![Bagde: SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=white)](#readme)
 [![Badge: GitLab](https://img.shields.io/badge/GitLab-FC6D26.svg?logo=gitlab&logoColor=white)](#readme)
+[![Bagde: Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?logo=ubuntu&logoColor=white)](#readme)
 [![Bagde: Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?logo=docker&logoColor=white)](#readme)
 [![Bagde: Docker image](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml/badge.svg)](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml)
 [![Bagde: Docker pulls](https://img.shields.io/docker/pulls/cyclenerd/scp-tools-gitlab)](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab)
@@ -9,14 +10,12 @@
 
 > 💿 One image to rule them all
 
-This [Docker Image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) is heavily used within the [Otto Group](https://www.ottogroup.com/).
+This [Docker container image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) is heavily used within the [Otto Group](https://www.ottogroup.com/).
 More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-its-journey-to-sap-cloud-platform/>
-
-
 
 ## Software
 
-This [Docker image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) based is on **Ubuntu GNU/Linux** 20.04 LTS (`ubuntu:20.04`).
+Container image based is on **Ubuntu GNU/Linux**.
 
 The following software is included:
 
@@ -36,7 +35,6 @@ The following software is included:
     * [eslint-config-ui5](https://www.npmjs.com/package/eslint-config-ui5)
 * [MkDocs](https://www.mkdocs.org/) (`mkdocs`)
   * [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
-
 
 ## HOWTO
 
@@ -60,11 +58,11 @@ Example run command:
 docker run cyclenerd/scp-tools-gitlab:latest java --version
 ```
 
-## CI/CD Example
+## Examples
 
-### mta.yml
+### MTA (`mta.yml`)
 
-```
+```yml
 _schema-version: '2.0'
 ID: de.nkn-it.demo
 version: 1.0.0
@@ -80,11 +78,9 @@ modules:
       ignore: ["*.git*"]
 ```
 
-### .gitlab-ci.yml
+### GitLab CI (`.gitlab-ci.yml`)
 
-SAP Cloud MTA Build Tool:
-
-```
+```yml
 image: cyclenerd/scp-tools-gitlab:latest
 
 stages:
@@ -99,6 +95,14 @@ build-and-deploy:
     - neo.sh deploy-mta -a "$SCP_ACCOUNT" -u "$SCP_USER" -p "$SCP_PASSWORD" -h hana.ondemand.com --source mta_archives/deploy.mtar --synchronous
   only:
     - master
+```
+
+### Google Cloud Build (`cloudbuild.yml`)
+
+```yml
+ - name: 'cyclenerd/scp-tools-gitlab:latest'
+   entrypoint: 'java'
+   args: ['--version']
 ```
 
 ## Help 👍
