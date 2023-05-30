@@ -93,7 +93,7 @@ RUN set -eux; \
 	mbt --version; \
 	mkdocs --version; \
 # Delete cache
- pip3 cache purge; \
+	pip3 cache purge; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
 
