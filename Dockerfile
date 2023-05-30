@@ -92,7 +92,8 @@ RUN set -eux; \
 	neo.sh version; \
 	mbt --version; \
 	mkdocs --version; \
-# Delete apt cache
+# Delete cache
+ pip3 cache purge; \
 	apt-get clean; \
 	rm -rf /var/lib/apt/lists/*
 
