@@ -53,11 +53,17 @@ RUN set -eux && \
 	npm install eslint -g && \
 	npm install eslint-plugin-ui5 -g && \
 	npm install eslint-config-ui5 -g && \
+# Install Maven
+    apt-get -yq --no-install-recommends install maven && \
 # Install SapMachine JDK
     wget -q -O - https://dist.sapmachine.io/debian/sapmachine.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/sapmachine.gpg && \
 	echo "deb [signed-by=/etc/apt/trusted.gpg.d/sapmachine.gpg] http://dist.sapmachine.io/debian/amd64/ ./" > /etc/apt/sources.list.d/sapmachine.list && \
 	apt-get update -yq && \
-	apt-get install -yq sapmachine-11-jdk && \
+	apt-get install -yq "sapmachine-${SAPMACHINE_VERSION?}-jdk" && \
+# Make sure, sapmachine jdk is used by default \
+    for alternative in jar jarsigner java javac javadoc javap jcmd jconsole jdb jdeprscan jdeps jfr jhsdb jimage jinfo jlink jmap jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool; \
+    do update-alternative --set "${alternative}" "/usr/lib/jvm/sapmachine-${SAPMACHINE_VERSION}/bin/${alternative}" || true; \
+    done && \
 # Install Cloud Foundry CLI
     wget -q -O - "https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key" | gpg --dearmor -o /etc/apt/trusted.gpg.d/cloudfoundry.gpg && \
 	echo "deb [signed-by=/etc/apt/trusted.gpg.d/cloudfoundry.gpg] https://packages.cloudfoundry.org/debian stable main" > /etc/apt/sources.list.d/cloudfoundry-cli.list && \
