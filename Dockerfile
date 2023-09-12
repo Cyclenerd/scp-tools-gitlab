@@ -7,7 +7,6 @@ ENV NEO_SDK_VERSION    "4.59.9.1"
 
 # Download URLs
 ENV NEO_SDK_URL        "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-$NEO_SDK_VERSION.zip"
-ENV NODEJS_URL         "https://deb.nodesource.com/setup_16.x"
 # Storage locations
 ENV NEO_SDK_HOME       "/opt/neo-sdk"
 ENV MTA_BUILDER_HOME   "/opt/mta-builder"
