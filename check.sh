@@ -10,15 +10,15 @@ if [ -v GITHUB_RUN_ID ]; then
 fi
 
 # Check SAP Dev Tools website
-curl "https://tools.hana.ondemand.com/" | grep -E -o -m 1 "neo-java-web-sdk-3[[:digit:]\.]+.zip" | sort -u > "/tmp/last-neo-sdk-version"
+curl "https://tools.hana.ondemand.com/" | grep -E -o -m 1 "neo-java-web-sdk-4[[:digit:]\.]+.zip" | sort -u > "/tmp/last-neo-sdk-version"
 
 # echo "neo-java-web-sdk-1.2.3.zip" > "/tmp/last-neo-sdk-version"
 
 # Check and replace version in Dockerfile
 if grep "zip" < "/tmp/last-neo-sdk-version"; then
-	export MY_NEO_SDK_VERSION=$(cat "/tmp/last-neo-sdk-version")
+	export MY_NEO_SDK_VERSION=$(grep -E -o -m 1 "[[:digit:]\.]+[[:digit:]]" < /tmp/last-neo-sdk-version)
 	echo "Neo SDK version : '$MY_NEO_SDK_VERSION'"
-	perl -i -pe's|neo-java-web-sdk-[\d\.]+\.zip|$ENV{MY_NEO_SDK_VERSION}|' "Dockerfile"
+	perl -i -pe's|^ENV NEO_SDK_VERSION.*|ENV NEO_SDK_VERSION    "$ENV{MY_NEO_SDK_VERSION}"|' "Dockerfile"
 else
 	echo "ERROR: Neo SDK version not found!"
 fi
