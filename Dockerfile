@@ -1,15 +1,15 @@
 FROM ubuntu:22.04
 
 # Versions
-ENV NODE_VERSION         "18"
+ENV NODE_VERSION       "18"
+ENV SAPMACHINE_VERSION "11"
+ENV NEO_SDK_VERSION    "4.59.9.1"
 
 # Download URLs
-ENV NEO_SDK_URL      "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-3.186.6.zip"
-ENV NODEJS_URL       "https://deb.nodesource.com/setup_16.x"
-
+ENV NEO_SDK_URL        "https://tools.hana.ondemand.com/sdk/neo-java-web-sdk-$NEO_SDK_VERSION.zip"
 # Storage locations
-ENV NEO_SDK_HOME     "/opt/neo-sdk"
-ENV MTA_BUILDER_HOME "/opt/mta-builder"
+ENV NEO_SDK_HOME       "/opt/neo-sdk"
+ENV MTA_BUILDER_HOME   "/opt/mta-builder"
 
 ENV JAVA_HOME "/usr/lib/jvm/sapmachine-11"
 ENV PATH="${JAVA_HOME}/bin:${NEO_SDK_HOME}/tools:${PATH}"
@@ -41,8 +41,8 @@ RUN set -eux && \
 	mkdir -p "$NEO_SDK_HOME" && \
 	mkdir -p "$MTA_BUILDER_HOME" && \
 # Install Node.js \
-    wget -q -O - https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/nodesource.gpg && \
-    echo "deb [signed-by=/etc/apt/trusted.gpg.d/nodesource.gpg] https://deb.nodesource.com/node_$NODE_VERSION.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
+  wget -q -O - https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/nodesource.gpg && \
+  echo "deb [signed-by=/etc/apt/trusted.gpg.d/nodesource.gpg] https://deb.nodesource.com/node_${NODE_VERSION?}.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
 	apt-get update -yq && \
 	apt-get install -yq nodejs && \
 # Install Node.js packages (https://www.npmjs.com/package)
@@ -54,21 +54,21 @@ RUN set -eux && \
 	npm install eslint-plugin-ui5 -g && \
 	npm install eslint-config-ui5 -g && \
 # Install Maven
-    apt-get -yq --no-install-recommends install maven && \
+  apt-get -yq --no-install-recommends install maven && \
 # Install SapMachine JDK
-    wget -q -O - https://dist.sapmachine.io/debian/sapmachine.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/sapmachine.gpg && \
+  wget -q -O - https://dist.sapmachine.io/debian/sapmachine.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/sapmachine.gpg && \
 	echo "deb [signed-by=/etc/apt/trusted.gpg.d/sapmachine.gpg] http://dist.sapmachine.io/debian/amd64/ ./" > /etc/apt/sources.list.d/sapmachine.list && \
 	apt-get update -yq && \
 	apt-get install -yq "sapmachine-${SAPMACHINE_VERSION?}-jdk" && \
-# Make sure, sapmachine jdk is used by default \
-    for alternative in jar jarsigner java javac javadoc javap jcmd jconsole jdb jdeprscan jdeps jfr jhsdb jimage jinfo jlink jmap jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool; \
+# Make sure, sapmachine jdk is used by default
+  for alternative in jar jarsigner java javac javadoc javap jcmd jconsole jdb jdeprscan jdeps jfr jhsdb jimage jinfo jlink jmap jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool; \
     do update-alternative --set "${alternative}" "/usr/lib/jvm/sapmachine-${SAPMACHINE_VERSION}/bin/${alternative}" || true; \
-    done && \
+  done && \
 # Install Cloud Foundry CLI
-    wget -q -O - "https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key" | gpg --dearmor -o /etc/apt/trusted.gpg.d/cloudfoundry.gpg && \
+  wget -q -O - "https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key" | gpg --dearmor -o /etc/apt/trusted.gpg.d/cloudfoundry.gpg && \
 	echo "deb [signed-by=/etc/apt/trusted.gpg.d/cloudfoundry.gpg] https://packages.cloudfoundry.org/debian stable main" > /etc/apt/sources.list.d/cloudfoundry-cli.list && \
 	apt-get update -yq && \
-	apt-get install -yq cf-cli;\
+	apt-get install -yq cf-cli && \
 # ...so that "cf deploy" is available
 	cf install-plugin multiapps -f && \
 # Install SAP Cloud Platform Neo Environment SDK (https://tools.hana.ondemand.com/#cloud)
