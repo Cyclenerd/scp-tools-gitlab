@@ -33,10 +33,21 @@ LABEL org.opencontainers.image.authors       "https://github.com/Cyclenerd/scp-t
 LABEL org.opencontainers.image.documentation "https://github.com/Cyclenerd/scp-tools-gitlab/blob/master/README.md"
 LABEL org.opencontainers.image.source        "https://github.com/Cyclenerd/scp-tools-gitlab"
 
-RUN set -eux && \
+RUN apt-get update -yq && \
 # Install base packages
-	apt-get update -yq && \
-	apt-get install -yq apt-utils build-essential wget ca-certificates git zip unzip tar lsb-release gnupg gettext-base python3-pip && \
+	apt-get install -yq \
+		apt-utils \
+		build-essential \
+		ca-certificates \
+		gettext-base \
+		git \
+		gnupg \
+		lsb-release \
+		python3-pip \
+		tar \
+		unzip \
+		wget \
+		zip && \
 # Create storage locations
 	mkdir -p "$NEO_SDK_HOME" && \
 	mkdir -p "$MTA_BUILDER_HOME" && \
@@ -81,25 +92,25 @@ RUN set -eux && \
 	chmod -R 777 . && \
 	npm install && \
 # MkDocs
-	pip3 install mkdocs  && \
+	pip3 install mkdocs && \
 	pip3 install mkdocs-material && \
 	pip3 install mkdocs-minify-plugin && \
 # Basic smoke test
-	lsb_release -a && \
-	uname -a && \
-	wget --version | head -1 && \
-	zip -v | head -2 && \
-	unzip -v | head -1 && \
-	tar --version | head -1 && \
-	envsubst --version | head -1 && \
-	node --version && \
-	npm --version && \
-	java --version && \
-	python3 --version && \
 	cf --version && \
-	neo.sh version && \
+	envsubst --version | head -1 && \
+	java --version && \
+	lsb_release -a && \
 	mbt --version && \
 	mkdocs --version && \
+	neo.sh version && \
+	node --version && \
+	npm --version && \
+	python3 --version && \
+	tar --version | head -1 && \
+	uname -a && \
+	unzip -v | head -1 && \
+	wget --version | head -1 && \
+	zip -v | head -2 && \
 # Delete cache
 	pip3 cache purge && \
 	apt-get clean && \
