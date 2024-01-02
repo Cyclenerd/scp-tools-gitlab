@@ -131,7 +131,8 @@ jobs:
       #
       # https://github.com/marketplace/actions/ghcr-cleaner
       # Forked from: https://github.com/Chizkiyahu/delete-untagged-ghcr-action
-      - uses: quartx-analytics/ghcr-cleaner@v1
+      - name: GHCR 🚮
+        uses: quartx-analytics/ghcr-cleaner@v1
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repository-owner: ${{ github.repository_owner }}
