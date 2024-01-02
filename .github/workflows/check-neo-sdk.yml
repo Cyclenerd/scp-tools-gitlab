@@ -3,7 +3,7 @@ name: "Check Neo SDK version"
 on:
   workflow_dispatch:
   schedule:
-    - cron: '12 4 * * *' # Daily at 04:12
+    - cron: '42 5 14 * *' # At 05:42 on day-of-month 14.
 
 jobs:
   check-changes:
