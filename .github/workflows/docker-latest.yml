@@ -112,3 +112,22 @@ jobs:
         run: |
           docker tag ghcr.io/cyclenerd/scp-tools-gitlab:test cyclenerd/scp-tools-gitlab:latest
           docker push cyclenerd/scp-tools-gitlab:latest
+
+  # Deletes old container images
+  # https://github.com/GoogleCloudPlatform/gcr-cleaner
+  gcr-cleaner:
+    runs-on: 'ubuntu-latest'
+    needs: [github-registry-latest,docker-hub-latest]
+    steps:
+      - name: Login to GitHub Container registry 🏭
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      # customize based on the gcr-cleaner flags
+      - uses: 'docker://us-docker.pkg.dev/gcr-cleaner/gcr-cleaner/gcr-cleaner-cli'
+        with:
+          args: >-
+            -repo=ghcr.io/cyclenerd/scp-tools-gitlab
+            -grace=48h
