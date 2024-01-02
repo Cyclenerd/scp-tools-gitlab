@@ -21,7 +21,13 @@ jobs:
       #   https://github.com/settings/tokens/new?scopes=read:packages,delete:packages
       # List personal access tokens:
       #   https://github.com/settings/tokens
-      - uses: Chizkiyahu/delete-untagged-ghcr-action@v3
+      #
+      # https://github.com/marketplace/actions/ghcr-cleaner
+      # Forked from: https://github.com/Chizkiyahu/delete-untagged-ghcr-action
+      - uses: quartx-analytics/ghcr-cleaner@v1
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          owner_type: user
+          repository-owner: ${{ github.repository_owner }}
+          repository-name: ${{ github.repository }}
+          owner-type: user
+          delete-untagged: true
