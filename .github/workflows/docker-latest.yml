@@ -114,11 +114,9 @@ jobs:
           docker push cyclenerd/scp-tools-gitlab:latest
 
   # Deletes old container images
-  # https://github.com/GoogleCloudPlatform/gcr-cleaner
-  gcr-cleaner:
+  ghcr-cleaner:
     name: Registry Cleaner
     runs-on: 'ubuntu-latest'
-    needs: [github-registry-latest,docker-hub-latest]
     steps:
       # As per documentation, the authentication to the GHCR registry must be done using a personal access token (PAT) to delete packages.
       # Only classic tokens can be used, fined-grained ones and GITHUB_TOKEN are currently (2024-01) not supported.
@@ -130,15 +128,13 @@ jobs:
       #   https://github.com/settings/tokens/new?scopes=read:packages,delete:packages
       # List personal access tokens:
       #   https://github.com/settings/tokens
-      - name: Login to GitHub Container registry 🏭
-        uses: docker/login-action@v3
+      #
+      # https://github.com/marketplace/actions/ghcr-cleaner
+      # Forked from: https://github.com/Chizkiyahu/delete-untagged-ghcr-action
+      - uses: quartx-analytics/ghcr-cleaner@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.PAT_TOKEN }}
-      # customize based on the gcr-cleaner flags
-      - uses: 'docker://us-docker.pkg.dev/gcr-cleaner/gcr-cleaner/gcr-cleaner-cli'
-        with:
-          args: >-
-            -repo=ghcr.io/cyclenerd/scp-tools-gitlab
-            -grace=48h
+          token: ${{ secrets.PAT_TOKEN }}
+          repository-owner: ${{ github.repository_owner }}
+          repository-name: ${{ github.repository }}
+          owner-type: user
+          delete-untagged: true

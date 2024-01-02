@@ -6,8 +6,7 @@ on:
 jobs:
 
   # Deletes old container images
-  # https://github.com/GoogleCloudPlatform/gcr-cleaner
-  gcr-cleaner:
+  ghcr-cleaner:
     name: Registry Cleaner
     runs-on: 'ubuntu-latest'
     steps:
