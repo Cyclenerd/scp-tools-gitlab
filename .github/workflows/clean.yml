@@ -10,7 +10,6 @@ jobs:
   gcr-cleaner:
     name: Registry Cleaner
     runs-on: 'ubuntu-latest'
-    needs: [github-registry-latest,docker-hub-latest]
     steps:
       # As per documentation, the authentication to the GHCR registry must be done using a personal access token (PAT) to delete packages.
       # Only classic tokens can be used, fined-grained ones and GITHUB_TOKEN are currently (2024-01) not supported.
