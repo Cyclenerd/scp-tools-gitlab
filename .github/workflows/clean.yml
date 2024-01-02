@@ -24,3 +24,4 @@ jobs:
       - uses: Chizkiyahu/delete-untagged-ghcr-action@v3
         with:
           token: ${{ secrets.PAT_TOKEN }}
+          owner_type: user
