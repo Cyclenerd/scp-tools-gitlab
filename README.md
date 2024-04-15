@@ -11,7 +11,7 @@
 > 💿 One image to rule them all
 
 This [Docker container image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) is heavily used within the [Otto Group](https://www.ottogroup.com/).
-More details in the SAP Blog post: <https://blogs.sap.com/2019/11/08/otto-group-its-journey-to-sap-cloud-platform/>
+More details in the SAP Blog post: <https://community.sap.com/t5/technology-blogs-by-members/otto-group-it-s-journey-to-sap-cloud-platform/ba-p/13437042>
 
 ## Software
 
