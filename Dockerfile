@@ -48,6 +48,8 @@ RUN apt-get update -yq && \
 		unzip \
 		wget \
 		zip && \
+# Disable Python virtual environments warning
+	rm "/usr/lib/python3.12/EXTERNALLY-MANAGED" && \
 # Create storage locations
 	mkdir -p "$NEO_SDK_HOME" && \
 	mkdir -p "$MTA_BUILDER_HOME" && \
