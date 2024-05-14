@@ -4,13 +4,44 @@
 [![Badge: GitLab](https://img.shields.io/badge/GitLab-FC6D26.svg?logo=gitlab&logoColor=white)](#readme)
 [![Badge: Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?logo=ubuntu&logoColor=white)](#readme)
 [![Badge: Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?logo=docker&logoColor=white)](#readme)
-[![Badge: Docker image](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml/badge.svg)](https://github.com/Cyclenerd/scp-tools-gitlab/actions/workflows/docker-latest.yml)
 [![Badge: License](https://img.shields.io/github/license/cyclenerd/scp-tools-gitlab)](https://github.com/Cyclenerd/scp-tools-gitlab/blob/master/LICENSE)
-[![Badge: Docker pulls](https://img.shields.io/docker/pulls/cyclenerd/scp-tools-gitlab)](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab)
+
+---
+
+## Public Archive Notice
+
+This repository has been transitioned to a public archive.
+While development has ceased, the codebase remains available for reference and historical purposes.
+
+**Impact on Current Users:**
+
+* New features and bug fixes will no longer be implemented.
+* Issues and pull requests will not be reviewed or merged.
+* This container image will be delisted from Docker Hub in August 2024. Please make alternative arrangements before then.
+
+**Accessing the Codebase:**
+
+* You can continue to clone, fork, and explore the code at your convenience.
+* The codebase reflects the repository's state at the time of archiving.
+
+**Staying Informed:**
+
+* I recommend considering alternative projects that are actively maintained for your ongoing development needs.
+
+**Contributing:**
+
+* While new contributions are no longer accepted in this repository, feel free to explore forking the codebase and creating your own derivative project.
+
+**Thank You:**
+
+I appreciate your past contributions and interest in this project.
+I hope the archived codebase remains a valuable resource!
+
+---
 
 > 💿 One image to rule them all
 
-This [Docker container image](https://hub.docker.com/r/cyclenerd/scp-tools-gitlab) is heavily used within the [Otto Group](https://www.ottogroup.com/).
+This Docker container image <s>is</s> was heavily used within the [Otto Group](https://www.ottogroup.com/).
 More details in the SAP Blog post: <https://community.sap.com/t5/technology-blogs-by-members/otto-group-it-s-journey-to-sap-cloud-platform/ba-p/13437042>
 
 ## Software
